@@ -12,6 +12,9 @@ project(
 
 include(cmake/variables.cmake)
 
+# Build as shared library by default
+set(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared libraries")
+
 # ---- Declare library ----
 
 add_library(
@@ -33,7 +36,7 @@ endif()
 
 set_target_properties(
     common-control_common-control PROPERTIES
-    C_VISIBILITY_PRESET hidden
+    C_VISIBILITY_PRESET default
     VERSION "${PROJECT_VERSION}"
     SOVERSION "${PROJECT_VERSION_MAJOR}"
     EXPORT_NAME common-control
