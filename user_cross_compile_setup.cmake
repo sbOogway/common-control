@@ -10,17 +10,17 @@ message("$ENV{STAGE}")
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
-set(CMAKE_SYSROOT $ENV{STAGE})
+# set(CMAKE_SYSROOT $ENV{STAGE})
 
 set(CMAKE_C_COMPILER $ENV{TOOLS}gcc)
 set(CMAKE_CXX_COMPILER $ENV{TOOLS}g++)
 
 # Configure pkg-config for cross-compilation
-set(ENV{PKG_CONFIG_SYSROOT_DIR} "$ENV{STAGE}")
-set(ENV{PKG_CONFIG_PATH} "$ENV{STAGE}/usr/lib/pkgconfig:$ENV{STAGE}/usr/share/pkgconfig")
+# set(ENV{PKG_CONFIG_SYSROOT_DIR} "$ENV{STAGE}")
+# set(ENV{PKG_CONFIG_PATH} "$ENV{STAGE}/usr/lib/pkgconfig:$ENV{STAGE}/usr/share/pkgconfig")
 
 # Configure CMake find commands for cross-compilation
-set(CMAKE_FIND_ROOT_PATH "$ENV{STAGE}")
+# set(CMAKE_FIND_ROOT_PATH "$ENV{STAGE}")
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
