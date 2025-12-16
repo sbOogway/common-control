@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "common-control/common-control.h"
+#include "common-control.h"
 
 char const* exported_function(void)
 {
