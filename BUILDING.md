@@ -53,18 +53,18 @@ cmake --install build --config Release
 This project exports a CMake package to be used with the [`find_package`][3]
 command of CMake:
 
-* Package name: `control-common`
-* Target name: `control-common::control-common`
+* Package name: `common-control`
+* Target name: `common-control::common-control`
 
 Example usage:
 
 ```cmake
-find_package(control-common REQUIRED)
+find_package(common-control REQUIRED)
 # Declare the imported target as a build requirement using PRIVATE, where
 # project_target is a target created in the consuming project
 target_link_libraries(
     project_target PRIVATE
-    control-common::control-common
+    common-control::common-control
 )
 ```
 

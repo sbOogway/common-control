@@ -1,6 +1,6 @@
 if(PROJECT_IS_TOP_LEVEL)
   set(
-      CMAKE_INSTALL_INCLUDEDIR "include/control-common-${PROJECT_VERSION}"
+      CMAKE_INSTALL_INCLUDEDIR "include/common-control-${PROJECT_VERSION}"
       CACHE STRING ""
   )
   set_property(CACHE CMAKE_INSTALL_INCLUDEDIR PROPERTY TYPE PATH)
@@ -10,26 +10,26 @@ include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
 
 # find_package(<package>) call for consumers to find this project
-set(package control-common)
+set(package common-control)
 
 install(
     DIRECTORY
     include/
     "${PROJECT_BINARY_DIR}/export/"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
-    COMPONENT control-common_Development
+    COMPONENT common-control_Development
 )
 
 install(
-    TARGETS control-common_control-common
+    TARGETS common-control_common-control
     EXPORT control-commonTargets
     RUNTIME #
-    COMPONENT control-common_Runtime
+    COMPONENT common-control_Runtime
     LIBRARY #
-    COMPONENT control-common_Runtime
-    NAMELINK_COMPONENT control-common_Development
+    COMPONENT common-control_Runtime
+    NAMELINK_COMPONENT common-control_Development
     ARCHIVE #
-    COMPONENT control-common_Development
+    COMPONENT common-control_Development
     INCLUDES #
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
@@ -41,30 +41,30 @@ write_basic_package_version_file(
 
 # Allow package maintainers to freely override the path for the configs
 set(
-    control-common_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/${package}"
+    common-control_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/${package}"
     CACHE STRING "CMake package config location relative to the install prefix"
 )
-set_property(CACHE control-common_INSTALL_CMAKEDIR PROPERTY TYPE PATH)
-mark_as_advanced(control-common_INSTALL_CMAKEDIR)
+set_property(CACHE common-control_INSTALL_CMAKEDIR PROPERTY TYPE PATH)
+mark_as_advanced(common-control_INSTALL_CMAKEDIR)
 
 install(
     FILES cmake/install-config.cmake
-    DESTINATION "${control-common_INSTALL_CMAKEDIR}"
+    DESTINATION "${common-control_INSTALL_CMAKEDIR}"
     RENAME "${package}Config.cmake"
-    COMPONENT control-common_Development
+    COMPONENT common-control_Development
 )
 
 install(
     FILES "${PROJECT_BINARY_DIR}/${package}ConfigVersion.cmake"
-    DESTINATION "${control-common_INSTALL_CMAKEDIR}"
-    COMPONENT control-common_Development
+    DESTINATION "${common-control_INSTALL_CMAKEDIR}"
+    COMPONENT common-control_Development
 )
 
 install(
-    EXPORT control-commonTargets
-    NAMESPACE control-common::
-    DESTINATION "${control-common_INSTALL_CMAKEDIR}"
-    COMPONENT control-common_Development
+    EXPORT common-controlTargets
+    NAMESPACE common-control::
+    DESTINATION "${common-control_INSTALL_CMAKEDIR}"
+    COMPONENT common-control_Development
 )
 
 if(PROJECT_IS_TOP_LEVEL)

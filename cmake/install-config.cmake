@@ -1,1 +1,1 @@
-include("${CMAKE_CURRENT_LIST_DIR}/control-commonTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/common-controlTargets.cmake")

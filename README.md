@@ -1,6 +1,6 @@
-# control-common
+# common-control
 
-This is the control-common project.
+This is the common-control project.
 
 # Building and installing
 

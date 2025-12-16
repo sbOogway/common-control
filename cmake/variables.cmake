@@ -1,11 +1,11 @@
 # ---- Developer mode ----
 
 # Developer mode enables targets and code paths in the CMake scripts that are
-# only relevant for the developer(s) of control-common
+# only relevant for the developer(s) of common-control
 # Targets necessary to build the project must be provided unconditionally, so
 # consumers can trivially build and package the project
 if(PROJECT_IS_TOP_LEVEL)
-  option(control-common_DEVELOPER_MODE "Enable developer mode" OFF)
+  option(common-control_DEVELOPER_MODE "Enable developer mode" OFF)
   option(BUILD_SHARED_LIBS "Build shared libs." OFF)
 endif()
 
@@ -18,12 +18,12 @@ endif()
 set(warning_guard "")
 if(NOT PROJECT_IS_TOP_LEVEL)
   option(
-      control-common_INCLUDES_WITH_SYSTEM
-      "Use SYSTEM modifier for control-common's includes, disabling warnings"
+      common-control_INCLUDES_WITH_SYSTEM
+      "Use SYSTEM modifier for common-control's includes, disabling warnings"
       ON
   )
-  mark_as_advanced(control-common_INCLUDES_WITH_SYSTEM)
-  if(control-common_INCLUDES_WITH_SYSTEM)
+  mark_as_advanced(common-control_INCLUDES_WITH_SYSTEM)
+  if(common-control_INCLUDES_WITH_SYSTEM)
     set(warning_guard SYSTEM)
   endif()
 endif()

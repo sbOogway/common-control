@@ -1,14 +1,14 @@
-#include "control-common/control-common.h"
-
 #include <pthread.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "common-control/common-control.h"
+
 char const* exported_function(void)
 {
-  return "control-common";
+  return "common-control";
 }
 
 void write_pid_to_file(const char* pid_file)
