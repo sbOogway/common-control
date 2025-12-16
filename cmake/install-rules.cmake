@@ -1,6 +1,6 @@
 if(PROJECT_IS_TOP_LEVEL)
   set(
-      CMAKE_INSTALL_INCLUDEDIR "include/common-control-${PROJECT_VERSION}"
+      CMAKE_INSTALL_INCLUDEDIR "include/common-control"
       CACHE STRING ""
   )
   set_property(CACHE CMAKE_INSTALL_INCLUDEDIR PROPERTY TYPE PATH)
@@ -22,7 +22,7 @@ install(
 
 install(
     TARGETS common-control_common-control
-    EXPORT control-commonTargets
+    EXPORT common-controlTargets
     RUNTIME #
     COMPONENT common-control_Runtime
     LIBRARY #
