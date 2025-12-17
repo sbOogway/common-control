@@ -76,7 +76,7 @@ void write_pid_to_file(const char* pid_file)
 
 void write_float_to_file(const char* file, float value)
 {
-  if (write_value_to_file(file, "%f\n", value) != 0) {
+  if (write_value_to_file(file, "%.2f\n", value) != 0) {
     fprintf(stderr, "Failed to write float to file %s\n", file);
   }
 }
