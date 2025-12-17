@@ -87,3 +87,11 @@ void write_char_to_file(const char* file, char value)
     fprintf(stderr, "Failed to write char to file %s\n", file);
   }
 }
+
+int sign(int value)
+{
+  if (value >= 0) {
+    return 1;
+  }
+  return -1;
+}
