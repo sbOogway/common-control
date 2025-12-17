@@ -20,6 +20,7 @@ set(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared libraries")
 add_library(
     common-control_common-control
     source/common-control.c
+    source/logging.c
 )
 add_library(common-control::common-control ALIAS common-control_common-control)
 
@@ -46,6 +47,8 @@ set_target_properties(
 target_include_directories(
     common-control_common-control ${warning_guard}
     PUBLIC
+    "\$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
+    PRIVATE
     "\$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
 )
 
