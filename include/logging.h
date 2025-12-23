@@ -19,6 +19,14 @@ typedef enum {
   LOG_OFF = 6
 } log_level_t;
 
+typedef enum {
+  TIMESTAMP_PRECISION_MILLI = 3,
+  TIMESTAMP_PRECISION_MICRO = 6,
+  TIMESTAMP_PRECISION_NANO = 9
+} timestamp_precision_t;
+
+#define LOGGING_TIMER_PRECISION TIMESTAMP_PRECISION_NANO
+
 /* Log output destinations */
 typedef enum {
   LOG_OUTPUT_CONSOLE = 1 << 0,

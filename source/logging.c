@@ -19,29 +19,50 @@ static FILE* log_file = NULL;
 static pthread_mutex_t log_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 static const char* level_strings[] = {
-    "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"};
+    "TRACE", "DEBUG", "INFO ", "WARN ", "ERROR", "FATAL"};
 
 static const char* default_format =
     "[%Y-%m-%d %H:%M:%S.%03ld] [%s] [%s:%d:%s] %s\n";
 
-static void get_timestamp(char* buffer, size_t size)
+static void get_timestamp(char* buffer,
+                          size_t size,
+                          timestamp_precision_t precision)
 {
-  struct timeval tv;
+  struct timespec ts;
   struct tm* tm_info;
 
-  gettimeofday(&tv, NULL);
-  tm_info = localtime(&tv.tv_sec);
+  clock_gettime(CLOCK_REALTIME, &ts);
+  tm_info = localtime(&ts.tv_sec);
+
+  const char* format;
+  long precision_value;
+
+  switch (precision) {
+    case TIMESTAMP_PRECISION_MILLI:
+      format = "%04d-%02d-%02d %02d:%02d:%02d.%03ld";
+      precision_value = ts.tv_nsec / 1000000;
+      break;
+    case TIMESTAMP_PRECISION_MICRO:
+      format = "%04d-%02d-%02d %02d:%02d:%02d.%06ld";
+      precision_value = ts.tv_nsec / 1000;
+      break;
+    case TIMESTAMP_PRECISION_NANO:
+    default:
+      format = "%04d-%02d-%02d %02d:%02d:%02d.%09ld";
+      precision_value = ts.tv_nsec;
+      break;
+  }
 
   snprintf(buffer,
            size,
-           "%04d-%02d-%02d %02d:%02d:%02d.%03ld",
+           format,
            tm_info->tm_year + 1900,
            tm_info->tm_mon + 1,
            tm_info->tm_mday,
            tm_info->tm_hour,
            tm_info->tm_min,
            tm_info->tm_sec,
-           tv.tv_usec / 1000);
+           precision_value);
 }
 
 void log_set_level(log_level_t level)
@@ -163,7 +184,7 @@ void log_write(log_level_t level,
   vsnprintf(message, sizeof(message), fmt, args);
   va_end(args);
 
-  get_timestamp(timestamp, sizeof(timestamp));
+  get_timestamp(timestamp, sizeof(timestamp), LOGGING_TIMER_PRECISION);
 
   if (current_log_output & LOG_OUTPUT_CONSOLE) {
     fprintf(stderr, "[%s] [%s] %s\n", timestamp, level_strings[level], message);
