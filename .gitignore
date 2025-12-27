@@ -13,3 +13,7 @@ env.bat
 env.ps1
 application.log
 example
+
+source/install.sh
+source/init.sh
+source/run.sh

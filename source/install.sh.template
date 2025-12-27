@@ -1,0 +1,6 @@
+#include "config.h"
+
+root_dir=ROOT_DIR
+
+cp ./source/run.sh $root_dir/run.sh
+cp ./source/init.sh $root_dir/init.sh
