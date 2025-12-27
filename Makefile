@@ -1,19 +1,30 @@
 BUILD_DIR = build
 CMAKE = cmake
 SUDO = sudo
+TEMPLATES = $(wildcard source/*.template)
+TEMPLATES_TARGETS = $(patsubst %.template, %, $(TEMPLATES))
+BASE_DIR = ./
+SOURCE_DIR = source/
+INCLUDE_DIR = include/
 
 # .PHONY targets ensure these run even if a file with the same name exists
-.PHONY: all build install clean
+.PHONY: all build install clean 
 
 # Default target
-all: build
+all: build $(TEMPLATES_TARGETS)
 
 build:
 	$(CMAKE) -S . -B $(BUILD_DIR) -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=ON
 	$(CMAKE) --build $(BUILD_DIR)
 
+$(TEMPLATES_TARGETS): %: %.template
+	gcc -E -P -xc -I $(BASE_DIR)$(INCLUDE_DIR) $< -o $@
+	sed -i '1i #!/bin/sh' $@
+	chmod +x $@
+
 install: build
 	$(SUDO) $(CMAKE) --install $(BUILD_DIR)
+	./source/install.sh
 
 clean:
 	rm -rf $(BUILD_DIR)
