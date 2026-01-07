@@ -1,0 +1,16 @@
+#include "config.h"
+
+root_dir=ROOT_DIR
+target_temperature=TARGET_TEMPERATURE
+
+target_temperature_file=$root_dir/$target_temperature
+
+if [ "$REQUEST_METHOD" = "POST" ] && [ -n "$CONTENT_LENGTH" ]; then
+    data=$(dd bs=1 count="$CONTENT_LENGTH" 2>/dev/null)
+fi
+
+echo "$data" > "$target_temperature_file"
+
+echo "Content-type: text/plain"
+echo ""
+echo "OK"

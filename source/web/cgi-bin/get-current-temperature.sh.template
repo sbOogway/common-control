@@ -1,0 +1,19 @@
+#include "config.h"
+
+root_dir=ROOT_DIR
+number_of_sensors=NUMBER_OF_SENSORS
+current_temperature=CURRENT_TEMPERATURE
+
+current_temperature_file=$root_dir"/"$current_temperature
+number_of_sensors_file=$root_dir"/"$number_of_sensors
+
+n_sensors=$(cat $number_of_sensors_file)
+
+echo "Content-type: application/json"
+echo ""
+echo "{"
+for i in (seq 0 $(($n_sensors - 1))); do
+    sensor_temp=$(cat $current_temperature_file/s$i)
+    echo "\t\"s$i\": \"$sensor_temp\","
+done
+echo "}"

@@ -1,0 +1,11 @@
+#include "config.h"
+
+root_dir=ROOT_DIR
+target_temperature=TARGET_TEMPERATURE
+
+target_temperature_file=$root_dir/$target_temperature
+
+echo "Content-type: text/plain"
+echo ""
+cat $target_temperature_file
+

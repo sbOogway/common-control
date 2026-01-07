@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMEL Temp Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>AMEL Temp Control</h1>
+        
+        <div class="bento-grid">
+            <div class="bento-card">
+                <h3>Current</h3>
+                <div class="current-temp" id="current-temp">--</div>
+                <div class="temp-status" id="temp-status">Initializing...</div>
+            </div>
+            
+            <div class="bento-card">
+                <h3>Target</h3>
+                <div class="target-temp" id="target-temp">--</div>
+                <div class="target-controls">
+                    <button class="temp-btn" id="temp-down">−</button>
+                    <button class="temp-btn" id="temp-up">+</button>
+                </div>
+                <div class="last-update" id="last-update" style="margin-top: auto;">Set point</div>
+            </div>
+            
+            <div class="bento-card">
+                <h3>Sensors</h3>
+                <div class="sensors-list" id="sensors-list"></div>
+            </div>
+            
+            <div class="bento-card chart-card">
+                <h3>Temperature History</h3>
+                <canvas id="temperature-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

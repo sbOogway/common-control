@@ -1,7 +1,7 @@
 BUILD_DIR = build
 CMAKE = cmake
 SUDO = sudo
-TEMPLATES = $(wildcard source/*.template)
+TEMPLATES = $(wildcard source/*.template source/web/cgi-bin/*.template)
 TEMPLATES_TARGETS = $(patsubst %.template, %, $(TEMPLATES))
 BASE_DIR = ./
 SOURCE_DIR = source/
