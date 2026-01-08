@@ -27,7 +27,7 @@ install: build
 	./source/install.sh
 
 web: 
-	cd source/web && npm run build
+	cd source/web && npm i && npm run build
 
 clean:
 	rm -rf $(BUILD_DIR)
