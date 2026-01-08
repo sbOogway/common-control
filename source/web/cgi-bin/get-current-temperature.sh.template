@@ -12,8 +12,16 @@ n_sensors=$(cat $number_of_sensors_file)
 echo "Content-type: application/json"
 echo ""
 echo "{"
-for i in (seq 0 $(($n_sensors - 1))); do
+for i in $(seq 0 $(($n_sensors - 1))); do
     sensor_temp=$(cat $current_temperature_file/s$i)
-    echo "\t\"s$i\": \"$sensor_temp\","
+    if [ $i -eq $(($n_sensors - 1)) ]; then
+
+        echo "\t\"s$i\": \"$sensor_temp\""
+
+    else
+
+        echo "\t\"s$i\": \"$sensor_temp\","
+
+    fi
 done
 echo "}"
