@@ -81,6 +81,32 @@ h1 {
     margin: 12px 0;
 }
 
+.refresh-control {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 12px 0;
+}
+
+.refresh-control label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.refresh-control input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d2d2d7;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #ffffff;
+    color: #1d1d1f;
+    text-align: center;
+}
+
 .temp-btn {
     width: 48px;
     height: 48px;

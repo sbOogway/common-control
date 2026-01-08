@@ -1,4 +1,5 @@
 let currentTargetTemperature = null;
+let refreshInterval = 5000; // Default 5 seconds
 
 async function fetchText(url) {
     const response = await fetch(url);
@@ -190,7 +191,7 @@ let temperatureInterval;
 
 function startTemperatureMonitoring() {
     fetchTemperatureData();
-    temperatureInterval = setInterval(fetchTemperatureData, 5000);
+    temperatureInterval = setInterval(fetchTemperatureData, refreshInterval);
 }
 
 function stopTemperatureMonitoring() {
@@ -199,9 +200,34 @@ function stopTemperatureMonitoring() {
     }
 }
 
+function updateRefreshInterval(seconds) {
+    refreshInterval = seconds * 1000;
+    stopTemperatureMonitoring();
+    startTemperatureMonitoring();
+    localStorage.setItem('refreshInterval', refreshInterval);
+}
+
 window.onload = function () {
     document.getElementById('temp-down').addEventListener('click', () => adjustTargetTemperature(-1));
     document.getElementById('temp-up').addEventListener('click', () => adjustTargetTemperature(1));
+
+    // Load saved refresh interval from localStorage
+    const savedInterval = localStorage.getItem('refreshInterval');
+    if (savedInterval) {
+        refreshInterval = parseInt(savedInterval);
+        document.getElementById('refresh-seconds').value = refreshInterval / 1000;
+    }
+
+    // Add event listener for refresh interval input
+    document.getElementById('refresh-seconds').addEventListener('change', (e) => {
+        const seconds = parseInt(e.target.value);
+        if (seconds >= 1 && seconds <= 60) {
+            updateRefreshInterval(seconds);
+        } else {
+            e.target.value = refreshInterval / 1000; // Reset to current value if invalid
+        }
+    });
+
     startTemperatureMonitoring();
 };
 
