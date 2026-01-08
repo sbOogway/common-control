@@ -26,6 +26,9 @@ install: build
 	$(SUDO) $(CMAKE) --install $(BUILD_DIR)
 	./source/install.sh
 
+web: 
+	cd source/web && npm run build
+
 clean:
 	rm -rf $(BUILD_DIR)
 	sudo rm -f /usr/local/lib/libcommon-control.so /usr/local/lib/libcommon-control.so.0 /usr/local/lib/libcommon-control.so.0.1.0 
