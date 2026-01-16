@@ -10,3 +10,4 @@ rm -f "$root_dir/$pid_control_process_name$pid_suffix"
 
 $root_dir/$temp_control_process_name &
 $root_dir/$pid_control_process_name &
+busybox httpd -p 8080 -h $root_dir/www
