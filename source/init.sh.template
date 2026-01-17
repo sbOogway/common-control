@@ -7,10 +7,14 @@ pid_suffix=PID_SUFFIX
 current_temperature=CURRENT_TEMPERATURE
 target_temperature=TARGET_TEMPERATURE
 default_target_t=DEFAULT_TARGET_TEMPERATURE
+log_dir=LOG_DIR
 
 target_t="$root_dir/$target_temperature"
 
 mkdir -p "$root_dir/$current_temperature"
+mkdir -p "$root_dir/$log_dir"
+chmod 777 "$root_dir/$log_dir"
 touch $target_t
 chmod 777 $target_t
+
 echo "$default_target_t" > $target_t

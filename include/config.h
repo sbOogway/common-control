@@ -10,11 +10,16 @@
 
 #define NUMBER_OF_SENSORS "number-sensors"
 
+#define LOG_DIR "logs"
+// %s is a placeholder for s0,s1 
+#define LOG_CSV_HEADER "timestamp,%starget_temperature,pid_output\n"
+
 #define CURRENT_TEMPERATURE_FILE ROOT_DIR "/" CURRENT_TEMPERATURE
 #define TARGET_TEMPERATURE_FILE  ROOT_DIR "/" TARGET_TEMPERATURE
 #define TEMP_CONTROL_PID_FILE    ROOT_DIR "/" TEMP_CONTROL_PROCESS_NAME PID_SUFFIX
 #define PID_CONTROL_PID_FILE     ROOT_DIR "/" PID_CONTROL_PROCESS_NAME  PID_SUFFIX
 #define NUMBER_OF_SENSORS_FILE   ROOT_DIR "/" NUMBER_OF_SENSORS
+#define LOG_CSV_DIR              ROOT_DIR "/" LOG_DIR "/"
 
 
 #define MIN_OUTPUT 0.0
@@ -31,5 +36,6 @@
 #define SAMPLE_TIME  1.0/SAMPLE_RATE
 
 
+
 #define SERIAL_PORT_INVERTER "/dev/ttyUSB0"
-#define SERIAL_PORT_SENSORS  "/dev/ttyUSB1"
+#define SERIAL_PORT_SENSORS  "/dev/ttyUSB0"
