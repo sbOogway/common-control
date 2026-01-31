@@ -8,6 +8,7 @@ pid_suffix=PID_SUFFIX
 rm -f "$root_dir/$temp_control_process_name$pid_suffix"
 rm -f "$root_dir/$pid_control_process_name$pid_suffix"
 
+set -a && source config.env && set +a
 $root_dir/$temp_control_process_name &
 $root_dir/$pid_control_process_name &
 busybox httpd -p 8080 -h $root_dir/www
