@@ -21,21 +21,18 @@
 #define NUMBER_OF_SENSORS_FILE   ROOT_DIR "/" NUMBER_OF_SENSORS
 #define LOG_CSV_DIR              ROOT_DIR "/" LOG_DIR "/"
 
+// this should be moved to a env file or config later
+// #define MIN_OUTPUT 0.0
+// #define MAX_OUTPUT 10000.0 // maximum value for the inverter is 20000
 
-#define MIN_OUTPUT 0.0
-#define MAX_OUTPUT 10000.0 // maximum value for the inverter is 20000
+// #define KP 1.0
+// #define KI 1.0
+// #define KD 0.0
 
-#define KP 1.0
-#define KI 1.0
-#define KD 0.0
+// #define DEFAULT_TARGET_TEMPERATURE 18.00
 
-#define DEFAULT_TARGET_TEMPERATURE 18.00
+// #define SAMPLE_RATE 0.2 // in hertz
+// #define SAMPLE_TIME  1.0/SAMPLE_RATE
 
-
-#define SAMPLE_RATE 0.2 // in hertz
-#define SAMPLE_TIME  1.0/SAMPLE_RATE
-
-
-
-#define SERIAL_PORT_INVERTER "/dev/ttyUSB0"
-#define SERIAL_PORT_SENSORS  "/dev/ttyUSB0"
+// #define SERIAL_PORT_INVERTER "/dev/ttyUSB0"
+// #define SERIAL_PORT_SENSORS  "/dev/ttyUSB0"
