@@ -24,6 +24,29 @@ static const char* level_strings[] = {
 static const char* default_format =
     "[%Y-%m-%d %H:%M:%S.%03ld] [%s] [%s:%d:%s] %s\n";
 
+static const char* get_process_name(void)
+{
+  static char process_name[64] = {0};
+
+  if (process_name[0] == '\0') {
+    FILE* f = fopen("/proc/self/comm", "r");
+    if (f) {
+      if (fgets(process_name, sizeof(process_name), f)) {
+        char* newline = strchr(process_name, '\n');
+        if (newline) {
+          *newline = '\0';
+        }
+      }
+      fclose(f);
+    } else {
+      strncpy(process_name, "unknown", sizeof(process_name) - 1);
+    }
+    process_name[8] = '\0';
+  }
+
+  return process_name;
+}
+
 static void get_timestamp(char* buffer,
                           size_t size,
                           timestamp_precision_t precision)
@@ -187,15 +210,21 @@ void log_write(log_level_t level,
   get_timestamp(timestamp, sizeof(timestamp), LOGGING_TIMER_PRECISION);
 
   if (current_log_output & LOG_OUTPUT_CONSOLE) {
-    fprintf(stderr, "[%s] [%s] %s\n", timestamp, level_strings[level], message);
+    fprintf(stderr,
+            "[%s] [%s] [%s] %s\n",
+            timestamp,
+            level_strings[level],
+            get_process_name(),
+            message);
   }
 
   if ((current_log_output & LOG_OUTPUT_FILE) && log_file && log_file != stderr)
   {
     fprintf(log_file,
-            "[%s] [%s] [%s:%d:%s] %s\n",
+            "[%s] [%s] [%s] [%s:%d:%s] %s\n",
             timestamp,
             level_strings[level],
+            get_process_name(),
             file,
             line,
             func,
