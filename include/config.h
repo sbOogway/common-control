@@ -12,7 +12,7 @@
 
 #define LOG_DIR "logs"
 // %s is a placeholder for s0,s1 
-#define LOG_CSV_HEADER "timestamp,%starget_temperature,pid_output\n"
+#define LOG_CSV_HEADER "timestamp,%starget_temperature,pid_output,p_term,i_term\n"
 
 #define CURRENT_TEMPERATURE_FILE ROOT_DIR "/" CURRENT_TEMPERATURE
 #define TARGET_TEMPERATURE_FILE  ROOT_DIR "/" TARGET_TEMPERATURE
@@ -21,4 +21,4 @@
 #define NUMBER_OF_SENSORS_FILE   ROOT_DIR "/" NUMBER_OF_SENSORS
 #define LOG_CSV_DIR              ROOT_DIR "/" LOG_DIR "/"
 
-#define DEFAULT_TARGET_TEMPERATURE 18.00
+#define DEFAULT_TARGET_TEMPERATURE 40.00
