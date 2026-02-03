@@ -32,6 +32,6 @@ web:
 clean:
 	rm -rf $(BUILD_DIR)
 	sudo rm -f /usr/local/lib/libcommon-control.so /usr/local/lib/libcommon-control.so.0 /usr/local/lib/libcommon-control.so.0.1.0 
-	sudo rm -rf /usr/local/include/common-control/common-control /usr/local/include/common-control/common-control.h /usr/local/include/common-control/logging.h
+	sudo rm -rf /usr/local/include/common-control/common-control /usr/local/include/common-control/common-control.h /usr/local/include/common-control/*.h
 	# Optional: Use CMake's built-in clean if you want to keep the build folder but remove binaries
 	# $(CMAKE) --build $(BUILD_DIR) --target clean
