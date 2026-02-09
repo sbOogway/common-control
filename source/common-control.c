@@ -51,7 +51,7 @@ static int get_pid_from_file_single(const char* pid_file)
   }
   char buf[16];
   read(fileno(pid_fd), buf, sizeof(buf) - 1);
-  close(fileno(pid_fd));
+  fclose(pid_fd);
   return atoi(buf);
 }
 
