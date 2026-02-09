@@ -18,3 +18,6 @@ touch $target_t
 chmod 777 $target_t
 
 echo "$default_target_t" > $target_t
+
+export TSLIB_TSDEVICE=/dev/input/event0
+export TSLIB_FBDEVICE=/dev/fb0
