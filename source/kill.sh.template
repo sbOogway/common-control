@@ -1,0 +1,9 @@
+#include "config.h"
+
+root_dir=ROOT_DIR
+temp_control_process_name=TEMP_CONTROL_PROCESS_NAME
+pid_control_process_name=PID_CONTROL_PROCESS_NAME
+
+kill -9 $(pgrep $temp_control_process_name)
+kill -9 $(pgrep $pid_control_process_name)
+kill -9 $(pgrep busybox)
