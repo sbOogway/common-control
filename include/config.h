@@ -7,6 +7,10 @@
 
 #define CURRENT_TEMPERATURE "current-temperature"
 #define TARGET_TEMPERATURE "target-temperature"
+#define FAN_SPEED "fan-speed"
+
+// mode 1 -> automatic, mode 0 -> manual
+#define MODE "mode"
 
 #define NUMBER_OF_SENSORS "number-sensors"
 
@@ -15,6 +19,8 @@
 #define LOG_CSV_HEADER "timestamp,%starget_temperature,pid_output,p_term,i_term\n"
 
 #define CURRENT_TEMPERATURE_FILE ROOT_DIR "/" CURRENT_TEMPERATURE
+#define FAN_SPEED_FILE           ROOT_DIR "/" FAN_SPEED
+#define MODE_FILE                ROOT_DIR "/" MODE
 #define TARGET_TEMPERATURE_FILE  ROOT_DIR "/" TARGET_TEMPERATURE
 #define TEMP_CONTROL_PID_FILE    ROOT_DIR "/" TEMP_CONTROL_PROCESS_NAME PID_SUFFIX
 #define PID_CONTROL_PID_FILE     ROOT_DIR "/" PID_CONTROL_PROCESS_NAME  PID_SUFFIX
@@ -22,3 +28,5 @@
 #define LOG_CSV_DIR              ROOT_DIR "/" LOG_DIR "/"
 
 #define DEFAULT_TARGET_TEMPERATURE 40.00
+
+

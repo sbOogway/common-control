@@ -6,16 +6,21 @@ pid_control_process_name=PID_CONTROL_PROCESS_NAME
 pid_suffix=PID_SUFFIX
 current_temperature=CURRENT_TEMPERATURE
 target_temperature=TARGET_TEMPERATURE
+fan_speed=fan_speed
 default_target_t=DEFAULT_TARGET_TEMPERATURE
 log_dir=LOG_DIR
 
 target_t="$root_dir/$target_temperature"
+fan_s="$root_dir/$fan_speed"
 
 mkdir -p "$root_dir/$current_temperature"
 mkdir -p "$root_dir/$log_dir"
 chmod 777 "$root_dir/$log_dir"
 touch $target_t
 chmod 777 $target_t
+
+touch $fan_s
+chmod 777 $fan_s
 
 echo "$default_target_t" > $target_t
 
