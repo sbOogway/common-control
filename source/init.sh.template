@@ -24,6 +24,8 @@ chmod 777 $target_t
 touch $fan_s
 chmod 777 $fan_s
 
+echo "0.00" > $fan_s
+
 touch $mode_f
 chmod 777 $mode_f
 
