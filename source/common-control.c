@@ -85,6 +85,13 @@ void write_char_to_file(const char* file, char value)
   }
 }
 
+void write_char_array_to_file(const char* file, const char* value)
+{
+  if (write_value_to_file(file, "%s\n", value) != 0) {
+    LOG_ERROR("Failed to write char array to file %s", file);
+  }
+}
+
 int sign(int value)
 {
   if (value >= 0) {
